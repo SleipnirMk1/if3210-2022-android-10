@@ -32,9 +32,9 @@ class ActivityCariFaskes : AppCompatActivity() {
         viewModel.getProvince()
         viewModel.myProvinceResponse.observe(this, Observer { response ->
             if(response.isSuccessful) {
-                Log.d("Response", response.body()?.curr_val!!)
-                Log.d("Response", response.body()?.message!!)
-                Log.d("Response", response.body()?.results.toString())
+//                Log.d("Response", response.body()?.curr_val!!)
+//                Log.d("Response", response.body()?.message!!)
+//                Log.d("Response", response.body()?.results.toString())
                 val arrProvince = response.body()?.results
                 val arrProvinceString = ArrayList<String>()
 
@@ -57,9 +57,9 @@ class ActivityCariFaskes : AppCompatActivity() {
             viewModel.getCity(provinceName)
             viewModel.myCityResponse.observe(this, Observer { response ->
                 if(response.isSuccessful) {
-                    Log.d("Response", response.body()?.curr_val!!)
-                    Log.d("Response", response.body()?.message!!)
-                    Log.d("Response", response.body()?.results.toString())
+//                    Log.d("Response", response.body()?.curr_val!!)
+//                    Log.d("Response", response.body()?.message!!)
+//                    Log.d("Response", response.body()?.results.toString())
                     val arrCity = response.body()?.results
                     val arrCityString = ArrayList<String>()
 
@@ -78,5 +78,17 @@ class ActivityCariFaskes : AppCompatActivity() {
             })
         }
 
+        buttonSearch.setOnClickListener {
+            val provinceInput = autoCompleteTVProvince.text.toString()
+            val cityInput = autoCompleteTVCity.text.toString()
+            viewModel.getFaskes(provinceInput, cityInput)
+            viewModel.myFaskesResponse.observe(this, { response ->
+                if(response.isSuccessful) {
+                    Log.d("FASKES", response.body().toString())
+                } else {
+                    Log.d("Response", response.errorBody().toString())
+                }
+            })
+        }
     }
 }
