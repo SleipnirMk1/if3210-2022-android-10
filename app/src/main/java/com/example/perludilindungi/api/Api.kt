@@ -1,10 +1,9 @@
 package com.example.perludilindungi.api
 
-import com.example.perludilindungi.model.FaskesResponse
-import com.example.perludilindungi.model.ProvinceCityResponse
+import com.example.perludilindungi.models.FaskesResponse
+import com.example.perludilindungi.models.ProvinceCityResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface Api {

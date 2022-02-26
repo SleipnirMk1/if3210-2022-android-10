@@ -3,8 +3,8 @@ package com.example.perludilindungi.faskes
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.perludilindungi.model.FaskesResponse
-import com.example.perludilindungi.model.ProvinceCityResponse
+import com.example.perludilindungi.models.FaskesResponse
+import com.example.perludilindungi.models.ProvinceCityResponse
 import com.example.perludilindungi.repository.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Response

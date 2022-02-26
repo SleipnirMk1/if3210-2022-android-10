@@ -1,8 +1,8 @@
 package com.example.perludilindungi.repository
 
 import com.example.perludilindungi.api.RetrofitInstance
-import com.example.perludilindungi.model.FaskesResponse
-import com.example.perludilindungi.model.ProvinceCityResponse
+import com.example.perludilindungi.models.FaskesResponse
+import com.example.perludilindungi.models.ProvinceCityResponse
 import retrofit2.Response
 
 class Repository {

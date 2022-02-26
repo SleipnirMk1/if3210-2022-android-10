@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="26dp"
+    android:paddingBottom="26dp"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
     tools:context=".faskes.ActivityCariFaskes">
 
   <TextView
@@ -14,54 +18,19 @@
       android:textColor="#000000"
       android:textSize="28sp"
       android:textStyle="bold"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.121"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.038" />
-
-  <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/textInputLayoutKota"
-      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="32dp"
-      android:layout_marginEnd="32dp"
-      android:hint="Pilih Kota"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProvinsi"
-      app:layout_constraintVertical_bias="0.036">
-
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextViewKota"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:inputType="none"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:text="Bogor" />
-  </com.google.android.material.textfield.TextInputLayout>
+      app:layout_constraintTop_toTopOf="parent" />
 
   <com.google.android.material.textfield.TextInputLayout
       android:id="@+id/textInputLayoutProvinsi"
       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="32dp"
       android:layout_marginTop="16dp"
-      android:layout_marginEnd="32dp"
       android:hint="Pilih Provinsi"
-      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textCariFaskes"
-      app:layout_constraintVertical_bias="0.013">
+      app:layout_constraintStart_toStartOf="@+id/textCariFaskes"
+      app:layout_constraintTop_toBottomOf="@+id/textCariFaskes">
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextViewProvinsi"
@@ -75,15 +44,47 @@
 
   </com.google.android.material.textfield.TextInputLayout>
 
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/textInputLayoutKota"
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:hint="Pilih Kota"
+      app:layout_constraintEnd_toEndOf="@+id/textInputLayoutProvinsi"
+      app:layout_constraintStart_toStartOf="@+id/textInputLayoutProvinsi"
+      app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProvinsi">
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextViewKota"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:inputType="none"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:text="Bogor" />
+  </com.google.android.material.textfield.TextInputLayout>
+
   <Button
       android:id="@+id/buttonSearch"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
       android:text="Search"
-      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textInputLayoutKota"
-      app:layout_constraintVertical_bias="0.028" />
+      app:layout_constraintTop_toBottomOf="@+id/textInputLayoutKota" />
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyclerView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/textInputLayoutKota"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="@+id/textInputLayoutKota"
+      app:layout_constraintTop_toBottomOf="@+id/buttonSearch"
+      app:layout_constraintVertical_bias="0.127" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

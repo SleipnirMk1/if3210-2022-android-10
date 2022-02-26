@@ -1,4 +1,4 @@
-package com.example.perludilindungi.model
+package com.example.perludilindungi.models
 
 data class FaskesResponse(
     val success: Boolean,

@@ -1,6 +1,4 @@
-package com.example.perludilindungi.model
-
-import android.view.ViewDebug
+package com.example.perludilindungi.models
 
 data class ModelResponse(
 //    val key: String,

@@ -3,17 +3,19 @@ package com.example.perludilindungi.faskes
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Button
+import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.perludilindungi.R
+import com.example.perludilindungi.adapter.FaskesAdapter
 import com.example.perludilindungi.repository.Repository
 
 class ActivityCariFaskes : AppCompatActivity() {
 
     private lateinit var viewModel: CariFaskesViewModel
+    private val faskesAdapter by lazy { FaskesAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,16 +27,16 @@ class ActivityCariFaskes : AppCompatActivity() {
         val autoCompleteTVCity = findViewById<AutoCompleteTextView>(R.id.autoCompleteTextViewKota)
         val buttonSearch = findViewById<Button>(R.id.buttonSearch)
 
-        // PROVINCES
         val repository = Repository()
         val viewModelFactory = CariFaskesViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(CariFaskesViewModel::class.java)
+
+        setupRecyclerView()
+
+        // PROVINCES
         viewModel.getProvince()
         viewModel.myProvinceResponse.observe(this, Observer { response ->
             if(response.isSuccessful) {
-//                Log.d("Response", response.body()?.curr_val!!)
-//                Log.d("Response", response.body()?.message!!)
-//                Log.d("Response", response.body()?.results.toString())
                 val arrProvince = response.body()?.results
                 val arrProvinceString = ArrayList<String>()
 
@@ -52,14 +54,12 @@ class ActivityCariFaskes : AppCompatActivity() {
             }
         })
 
+        // CITY
         autoCompleteTVProvince.setOnItemClickListener { adapterView, view, i, l ->
             val provinceName = autoCompleteTVProvince.text.toString()
             viewModel.getCity(provinceName)
             viewModel.myCityResponse.observe(this, Observer { response ->
                 if(response.isSuccessful) {
-//                    Log.d("Response", response.body()?.curr_val!!)
-//                    Log.d("Response", response.body()?.message!!)
-//                    Log.d("Response", response.body()?.results.toString())
                     val arrCity = response.body()?.results
                     val arrCityString = ArrayList<String>()
 
@@ -84,11 +84,19 @@ class ActivityCariFaskes : AppCompatActivity() {
             viewModel.getFaskes(provinceInput, cityInput)
             viewModel.myFaskesResponse.observe(this, { response ->
                 if(response.isSuccessful) {
+                    response.body()?.let { faskesAdapter.setData(it.data) }
                     Log.d("FASKES", response.body().toString())
                 } else {
-                    Log.d("Response", response.errorBody().toString())
+                    Toast.makeText(this, response.code(), Toast.LENGTH_SHORT).show()
                 }
             })
         }
+    }
+
+    private fun setupRecyclerView() {
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.adapter = faskesAdapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
     }
 }
