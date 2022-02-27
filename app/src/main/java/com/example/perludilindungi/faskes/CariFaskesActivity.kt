@@ -6,13 +6,12 @@ import android.util.Log
 import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.perludilindungi.R
 import com.example.perludilindungi.adapter.FaskesAdapter
+import com.example.perludilindungi.faskes.fragments.FaskesFragment
 import com.example.perludilindungi.repository.Repository
 
-class ActivityCariFaskes : AppCompatActivity() {
+class CariFaskesActivity : AppCompatActivity() {
 
     private lateinit var viewModel: CariFaskesViewModel
     private val faskesAdapter by lazy { FaskesAdapter() }
@@ -30,8 +29,6 @@ class ActivityCariFaskes : AppCompatActivity() {
         val repository = Repository()
         val viewModelFactory = CariFaskesViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(CariFaskesViewModel::class.java)
-
-        setupRecyclerView()
 
         // PROVINCES
         viewModel.getProvince()
@@ -81,22 +78,27 @@ class ActivityCariFaskes : AppCompatActivity() {
         buttonSearch.setOnClickListener {
             val provinceInput = autoCompleteTVProvince.text.toString()
             val cityInput = autoCompleteTVCity.text.toString()
-            viewModel.getFaskes(provinceInput, cityInput)
-            viewModel.myFaskesResponse.observe(this, { response ->
-                if(response.isSuccessful) {
-                    response.body()?.let { faskesAdapter.setData(it.data) }
-                    Log.d("FASKES", response.body().toString())
-                } else {
-                    Toast.makeText(this, response.code(), Toast.LENGTH_SHORT).show()
-                }
-            })
+//            viewModel.getFaskes(provinceInput, cityInput)
+//            viewModel.myFaskesResponse.observe(this, { response ->
+//                if(response.isSuccessful) {
+//                    response.body()?.let { faskesAdapter.setData(it.data) }
+//                    Log.d("FASKES", response.body().toString())
+//                } else {
+//                    Toast.makeText(this, response.code(), Toast.LENGTH_SHORT).show()
+//                }
+//            })
+
+            val mFragmentManager = supportFragmentManager
+            val mFragmentTransaction = mFragmentManager.beginTransaction()
+            val mFragment = FaskesFragment()
+
+            // kalo taroh di luar button dah bisa
+            val mBundle = Bundle()
+            mBundle.putString("provinceInput", provinceInput)
+            mBundle.putString("cityInput", cityInput)
+            mFragment.arguments = mBundle
+            mFragmentTransaction.replace(R.id.frameLayoutFaskes, mFragment).commit()
         }
     }
 
-    private fun setupRecyclerView() {
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.adapter = faskesAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-    }
 }

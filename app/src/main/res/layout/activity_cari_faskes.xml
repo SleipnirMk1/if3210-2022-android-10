@@ -8,7 +8,7 @@
     android:paddingBottom="26dp"
     android:paddingLeft="32dp"
     android:paddingRight="32dp"
-    tools:context=".faskes.ActivityCariFaskes">
+    tools:context=".faskes.CariFaskesActivity">
 
   <TextView
       android:id="@+id/textCariFaskes"
@@ -70,21 +70,19 @@
       android:id="@+id/buttonSearch"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
+      android:layout_marginTop="8dp"
       android:text="Search"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textInputLayoutKota" />
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recyclerView"
+  <FrameLayout
+      android:id="@+id/frameLayoutFaskes"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_marginTop="250dp"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="@+id/textInputLayoutKota"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="@+id/textInputLayoutKota"
       app:layout_constraintTop_toBottomOf="@+id/buttonSearch"
-      app:layout_constraintVertical_bias="0.127" />
+      tools:layout_editor_absoluteX="-4dp"></FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,13 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PerluDilindungi">
         <activity
-            android:name=".faskes.CariFaskesActivity2"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".faskes.ActivityCariFaskes"
+            android:name=".faskes.CariFaskesActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

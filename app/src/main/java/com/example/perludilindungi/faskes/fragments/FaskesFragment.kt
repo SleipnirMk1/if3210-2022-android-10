@@ -20,6 +20,8 @@ class FaskesFragment : Fragment() {
 
     private lateinit var viewModel: CariFaskesViewModel
     private lateinit var recyclerView: RecyclerView
+    private lateinit var provinceInput: String
+    private lateinit var cityInput: String
     private val faskesAdapter by lazy { FaskesAdapter() }
 
 //    companion object {
@@ -38,6 +40,11 @@ class FaskesFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerView2)
         recyclerView.adapter = faskesAdapter
         recyclerView.layoutManager = LinearLayoutManager(activity)
+
+//        bikin error
+        val bundle = arguments
+        provinceInput = bundle?.getString("provinceInput").toString()
+        cityInput = bundle?.getString("cityInput").toString()
         return view
     }
 
@@ -48,7 +55,7 @@ class FaskesFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(CariFaskesViewModel::class.java)
         // TODO: Use the ViewModel
 
-        viewModel.getFaskes("DKI JAKARTA", "KOTA ADM. JAKARTA BARAT")
+        viewModel.getFaskes(provinceInput, cityInput)
         activity?.let {
             viewModel.myFaskesResponse.observe(it) { response ->
                 if (response.isSuccessful) {
