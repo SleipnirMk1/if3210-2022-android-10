@@ -1,9 +1,11 @@
 package com.example.perludilindungi.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.perludilindungi.R
 import com.example.perludilindungi.models.DataFaskesResponse
@@ -29,6 +31,11 @@ class FaskesAdapter: RecyclerView.Adapter<FaskesAdapter.FaskesViewHolder>() {
         holder.itemView.findViewById<TextView>(R.id.tvNoTelp).text = faskesList[position].telp
         holder.itemView.findViewById<TextView>(R.id.tvJenisFaskes).text = faskesList[position].jenis_faskes
         holder.itemView.findViewById<TextView>(R.id.tvKodeFaskes).text = faskesList[position].kode
+
+        View.OnClickListener {
+//            Toast.makeText(this, "item selected", Toast.LENGTH_LONG).show()
+            Log.d("ADAPTER", "item selected")
+        }
     }
 
     fun setData(newList: List<DataFaskesResponse>) {
