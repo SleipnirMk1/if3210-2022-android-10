@@ -23,6 +23,8 @@ class FaskesFragment : Fragment() {
     private lateinit var provinceInput: String
     private lateinit var cityInput: String
     private val faskesAdapter by lazy { FaskesAdapter() }
+    private var lat: Double = 0.0
+    private var lon: Double = 0.0
 
 //    companion object {
 //        fun newInstance() = FaskesFragment()
@@ -45,6 +47,11 @@ class FaskesFragment : Fragment() {
         val bundle = arguments
         provinceInput = bundle?.getString("provinceInput").toString()
         cityInput = bundle?.getString("cityInput").toString()
+        lat = bundle!!.getDouble("lat")
+        lon = bundle!!.getDouble("long")
+
+        Log.d("FRAGMENT LAT", lat.toString())
+        Log.d("FRAGMENT LONG", lon.toString())
         return view
     }
 
@@ -59,8 +66,8 @@ class FaskesFragment : Fragment() {
         activity?.let {
             viewModel.myFaskesResponse.observe(it) { response ->
                 if (response.isSuccessful) {
-                    response.body()?.let { faskesAdapter.setData(it.data) }
-                    Log.d("FASKES", response.body().toString())
+                    response.body()?.let { faskesAdapter.setData(it.get5Nearest(lon, lat)) }
+//                    Log.d("FASKES", response.body().toString())
                 } else {
                     Toast.makeText(activity, response.code(), Toast.LENGTH_SHORT).show()
                 }
