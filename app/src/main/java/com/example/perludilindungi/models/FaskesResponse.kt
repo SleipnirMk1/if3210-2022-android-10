@@ -22,31 +22,34 @@ data class FaskesResponse(
         // faskes > 5
         else {
             // create hashmap between the distance and array index
-            var hashMap: HashMap<Float, Int> = HashMap()
+            var hashMap: HashMap<Int, Float> = HashMap()
 
             // adding element
             for (i in 0..dataSize-1) {
-                hashMap.put(distance(myLon, myLat,
+                hashMap.put(i, distance(myLon, myLat,
                     this.data.get(i).longitude.toDouble(),
-                    this.data.get(i).latitude.toDouble()),
-                i)
-                Log.d("DALEM LOOP", distance(myLon, myLat,
-                    this.data.get(i).longitude.toDouble(),
-                    this.data.get(i).latitude.toDouble()).toString())
+                    this.data.get(i).latitude.toDouble()))
+//                Log.d("DALEM LOOP", distance(myLon, myLat,
+//                    this.data.get(i).longitude.toDouble(),
+//                    this.data.get(i).latitude.toDouble()).toString())
             }
 
             // sort hashmap
-            var sorted = hashMap.toSortedMap().keys.toList()
-            Log.d("JUMLAH DATA", dataSize.toString())
-            Log.d("HASH MAP", hashMap.toString())
+//            var sorted = hashMap.toSortedMap().values.toList()
+            var sorted = hashMap.toList().sortedBy { (_, value) -> value}.toMap()
+//            Log.d("JUMLAH DATA", dataSize.toString())
+//            Log.d("JUMLAH HASHMAP", sorted.size.toString())
+//            Log.d("HASH MAP", sorted.toString())
 
             // get 5 first
             for(item in sorted) {
                 if (arrData.size >= 5) {
                     break
                 }
-                var index = hashMap.get(item)
-                arrData.add(this.data.get(index!!))
+
+                arrData.add(this.data.get(item.key))
+//                Log.d("YANG MASUK", this.data.get(item.key).toString())
+//                Log.d("DENGAN JARAk", item.value.toString())
             }
         }
         return arrData
