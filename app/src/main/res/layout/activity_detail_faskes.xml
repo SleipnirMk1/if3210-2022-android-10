@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="32dp"
+    android:paddingTop="32dp"
+    android:paddingRight="32dp"
+    android:paddingBottom="32dp"
+    tools:context=".faskes.DetailFaskesActivity">
+
+    <TextView
+        android:id="@+id/tvFasilitasIni2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:text="Fasilitas Ini" />
+
+    <TextView
+        android:id="@+id/tvStatusFaskes2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintEnd_toEndOf="@+id/tvFasilitasIni2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/tvFasilitasIni2"
+        app:layout_constraintTop_toBottomOf="@+id/tvFasilitasIni2"
+        tools:text="SIAP VAKSINASI" />
+
+    <TextView
+        android:id="@+id/tvTipeFaskes2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvKodeFaskes2"
+        tools:text="Tipe Faskes" />
+
+    <TextView
+        android:id="@+id/tvNamaFaskes2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Faskes CIGOMBONG" />
+
+    <TextView
+        android:id="@+id/tvKodeFaskes2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvNamaFaskes2"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamaFaskes2"
+        tools:text="Kode Faskes" />
+
+    <TextView
+        android:id="@+id/tvNoTelpFaskes2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/tvAlamatFaskes2"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlamatFaskes2"
+        tools:text="No Telp Faskes" />
+
+    <TextView
+        android:id="@+id/tvAlamatFaskes2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tvKodeFaskes2"
+        app:layout_constraintTop_toBottomOf="@+id/tvKodeFaskes2"
+        tools:text="Alamat Faskes" />
+
+    <Button
+        android:id="@+id/buttonGoogleMaps2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Google Maps"
+        app:layout_constraintEnd_toEndOf="@+id/tvStatusFaskes2"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/tvStatusFaskes2"
+        app:layout_constraintTop_toBottomOf="@+id/tvStatusFaskes2" />
+
+    <Button
+        android:id="@+id/buttonGoogleMaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+ Bookmark"
+        app:layout_constraintEnd_toEndOf="@+id/buttonGoogleMaps2"
+        app:layout_constraintStart_toStartOf="@+id/buttonGoogleMaps2"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGoogleMaps2" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/ic_action_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>

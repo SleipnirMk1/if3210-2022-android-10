@@ -22,11 +22,10 @@ import com.google.android.gms.location.*
 import com.google.android.gms.tasks.OnCompleteListener
 import java.util.jar.Manifest
 
-class CariFaskesActivity : AppCompatActivity() {
+class CariFaskesActivity : AppCompatActivity(){
 
     private lateinit var viewModel: CariFaskesViewModel
     private lateinit var flp: FusedLocationProviderClient
-    private val faskesAdapter by lazy { FaskesAdapter() }
     private var lat: Double = 0.0
     private var long: Double = 0.0
 

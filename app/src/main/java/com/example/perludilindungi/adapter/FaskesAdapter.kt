@@ -11,11 +11,29 @@ import com.example.perludilindungi.R
 import com.example.perludilindungi.models.DataFaskesResponse
 import com.example.perludilindungi.models.FaskesResponse
 
-class FaskesAdapter: RecyclerView.Adapter<FaskesAdapter.FaskesViewHolder>() {
+class FaskesAdapter(
+    private val listener: OnItemClickListener
+): RecyclerView.Adapter<FaskesAdapter.FaskesViewHolder>() {
 
     private var faskesList = emptyList<DataFaskesResponse>()
 
-    inner class FaskesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+    inner class FaskesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),
+    View.OnClickListener {
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            val position: Int = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FaskesViewHolder {
         return FaskesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.faskes_layout, parent, false))
@@ -31,11 +49,6 @@ class FaskesAdapter: RecyclerView.Adapter<FaskesAdapter.FaskesViewHolder>() {
         holder.itemView.findViewById<TextView>(R.id.tvNoTelp).text = faskesList[position].telp
         holder.itemView.findViewById<TextView>(R.id.tvJenisFaskes).text = faskesList[position].jenis_faskes
         holder.itemView.findViewById<TextView>(R.id.tvKodeFaskes).text = faskesList[position].kode
-
-        View.OnClickListener {
-//            Toast.makeText(this, "item selected", Toast.LENGTH_LONG).show()
-            Log.d("ADAPTER", "item selected")
-        }
     }
 
     fun setData(newList: List<DataFaskesResponse>) {

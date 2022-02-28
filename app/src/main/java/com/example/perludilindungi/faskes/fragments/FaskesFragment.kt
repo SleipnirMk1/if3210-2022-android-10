@@ -16,15 +16,19 @@ import com.example.perludilindungi.faskes.CariFaskesViewModel
 import com.example.perludilindungi.faskes.CariFaskesViewModelFactory
 import com.example.perludilindungi.repository.Repository
 
-class FaskesFragment : Fragment() {
+class FaskesFragment : Fragment(), FaskesAdapter.OnItemClickListener {
 
     private lateinit var viewModel: CariFaskesViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var provinceInput: String
     private lateinit var cityInput: String
-    private val faskesAdapter by lazy { FaskesAdapter() }
+    private val faskesAdapter by lazy { FaskesAdapter(this) }
     private var lat: Double = 0.0
     private var lon: Double = 0.0
+
+    override fun onItemClick(position: Int) {
+        Toast.makeText(activity, "Item $position clicked", Toast.LENGTH_SHORT).show()
+    }
 
 //    companion object {
 //        fun newInstance() = FaskesFragment()

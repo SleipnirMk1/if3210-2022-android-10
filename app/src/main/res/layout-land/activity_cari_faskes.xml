@@ -11,15 +11,11 @@
     android:orientation="horizontal"
     tools:context=".faskes.CariFaskesActivity">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:paddingRight="10dp">
-
       <androidx.constraintlayout.widget.ConstraintLayout
           android:layout_width="match_parent"
-          android:layout_height="match_parent">
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:paddingRight="12dp">
 
         <TextView
             android:id="@+id/textCariFaskes"
@@ -89,14 +85,12 @@
 
       </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </FrameLayout>
-
     <FrameLayout
         android:id="@+id/frameLayoutFaskes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:paddingLeft="10dp"
+        android:paddingLeft="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSearch"
         tools:layout_editor_absoluteX="-4dp"></FrameLayout>
