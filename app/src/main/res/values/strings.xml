@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Perlu Dilindungi</string>
     <string name="fasilitas_ini">Fasilitas Ini</string>
+    <string name="google_maps">Google Maps</string>
 
     <string-array name="provinsi">
         <item>Jawa Barat</item>

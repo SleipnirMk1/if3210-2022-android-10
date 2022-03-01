@@ -32,7 +32,7 @@ class FaskesFragment : Fragment(), FaskesAdapter.OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         val faskes: DataFaskesResponse = arrData.get(position)
-        Toast.makeText(activity, "Item $faskes clicked", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(activity, "Item $faskes clicked", Toast.LENGTH_SHORT).show()
 
         val intent = Intent(activity, DetailFaskesActivity::class.java)
         intent.putExtra("namaFaskes", faskes.nama)
@@ -41,6 +41,8 @@ class FaskesFragment : Fragment(), FaskesAdapter.OnItemClickListener {
         intent.putExtra("telpFaskes", faskes.telp)
         intent.putExtra("jenisFaskes", faskes.jenis_faskes)
         intent.putExtra("statusFaskes", faskes.status)
+        intent.putExtra("lon", faskes.longitude)
+        intent.putExtra("lat", faskes.latitude)
         startActivity(intent)
     }
 
