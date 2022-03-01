@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class FaskesDataViewModel(application: Application): AndroidViewModel(application) {
 
-    private val readAllData: LiveData<List<DataFaskesResponse>>
+    val readAllData: LiveData<List<DataFaskesResponse>>
     private val repository: FaskesRepository
 
     init {

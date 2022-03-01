@@ -8,4 +8,8 @@
         <item>Jawa Tengah</item>
         <item>Jawa Timur</item>
     </string-array>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
