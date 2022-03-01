@@ -20,6 +20,8 @@ import com.example.perludilindungi.faskes.fragments.FaskesFragment
 import com.example.perludilindungi.repository.Repository
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import java.util.jar.Manifest
 
 class CariFaskesActivity : AppCompatActivity(){
@@ -28,11 +30,20 @@ class CariFaskesActivity : AppCompatActivity(){
     private lateinit var flp: FusedLocationProviderClient
     private var lat: Double = 0.0
     private var long: Double = 0.0
+    private val TAG = "CariFaskesActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cari_faskes)
         Log.i("[LOG INFO]","onCreate called")
+
+        // navigation
+        val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        navigation.selectedItemId = R.id.navigationLocation
+
+//        val navigation2 = findViewById<NavigationView>(R.id.bottom_navigation)
+//        navigation2.isSelected
+
 
         // location
         flp = LocationServices.getFusedLocationProviderClient(this)

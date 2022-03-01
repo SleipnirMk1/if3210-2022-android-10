@@ -14,11 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PerluDilindungi" >
         <activity
-            android:name=".MainActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_main2" />
-        <activity
-            android:name=".faskes.CariFaskesActivity"
+            android:name=".faskes.BookmarkFaskesActivity"
             android:exported="false" />
         <activity
             android:name=".faskes.DetailFaskesActivity"
@@ -27,7 +23,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".faskes.BookmarkFaskesActivity"
+            android:name=".faskes.CariFaskesActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
