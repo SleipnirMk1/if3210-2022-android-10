@@ -1,5 +1,6 @@
 package com.example.perludilindungi.faskes.fragments
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,8 @@ import com.example.perludilindungi.R
 import com.example.perludilindungi.adapter.FaskesAdapter
 import com.example.perludilindungi.faskes.CariFaskesViewModel
 import com.example.perludilindungi.faskes.CariFaskesViewModelFactory
+import com.example.perludilindungi.faskes.DetailFaskesActivity
+import com.example.perludilindungi.models.DataFaskesResponse
 import com.example.perludilindungi.repository.Repository
 
 class FaskesFragment : Fragment(), FaskesAdapter.OnItemClickListener {
@@ -22,12 +25,23 @@ class FaskesFragment : Fragment(), FaskesAdapter.OnItemClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var provinceInput: String
     private lateinit var cityInput: String
+    private lateinit var arrData: ArrayList<DataFaskesResponse>
     private val faskesAdapter by lazy { FaskesAdapter(this) }
     private var lat: Double = 0.0
     private var lon: Double = 0.0
 
     override fun onItemClick(position: Int) {
-        Toast.makeText(activity, "Item $position clicked", Toast.LENGTH_SHORT).show()
+        val faskes: DataFaskesResponse = arrData.get(position)
+        Toast.makeText(activity, "Item $faskes clicked", Toast.LENGTH_SHORT).show()
+
+        val intent = Intent(activity, DetailFaskesActivity::class.java)
+        intent.putExtra("namaFaskes", faskes.nama)
+        intent.putExtra("kodeFaskes", faskes.kode)
+        intent.putExtra("alamatFaskes", faskes.alamat)
+        intent.putExtra("telpFaskes", faskes.telp)
+        intent.putExtra("jenisFaskes", faskes.jenis_faskes)
+        intent.putExtra("statusFaskes", faskes.status)
+        startActivity(intent)
     }
 
 //    companion object {
@@ -47,7 +61,6 @@ class FaskesFragment : Fragment(), FaskesAdapter.OnItemClickListener {
         recyclerView.adapter = faskesAdapter
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-//        bikin error
         val bundle = arguments
         provinceInput = bundle?.getString("provinceInput").toString()
         cityInput = bundle?.getString("cityInput").toString()
@@ -70,7 +83,10 @@ class FaskesFragment : Fragment(), FaskesAdapter.OnItemClickListener {
         activity?.let {
             viewModel.myFaskesResponse.observe(it) { response ->
                 if (response.isSuccessful) {
-                    response.body()?.let { faskesAdapter.setData(it.get5Nearest(lon, lat)) }
+                    response.body()?.let {
+                        arrData = it.get5Nearest(lon, lat)
+                        faskesAdapter.setData(arrData)
+                    }
 //                    Log.d("FASKES", response.body().toString())
                 } else {
                     Toast.makeText(activity, response.code(), Toast.LENGTH_SHORT).show()
