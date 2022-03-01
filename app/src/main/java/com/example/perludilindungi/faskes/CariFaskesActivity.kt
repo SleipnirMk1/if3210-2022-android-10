@@ -21,6 +21,7 @@ import com.example.perludilindungi.repository.Repository
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationView
 import java.util.jar.Manifest
 
@@ -40,6 +41,18 @@ class CariFaskesActivity : AppCompatActivity(){
         // navigation
         val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         navigation.selectedItemId = R.id.navigationLocation
+        navigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.navigationBookmark -> {
+                    startActivity(Intent(this, BookmarkFaskesActivity::class.java))
+                }
+                R.id.navigationNews -> {
+                    // TODO taroh activity news disini
+                }
+                else -> Log.d(TAG, "onCreate: masuk else")
+            }
+            return@setOnItemSelectedListener true
+        }
 
 //        val navigation2 = findViewById<NavigationView>(R.id.bottom_navigation)
 //        navigation2.isSelected

@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:hint="Pilih Provinsi"
+                android:hint="@string/pilih_provinsi"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textCariFaskes"
                 app:layout_constraintTop_toBottomOf="@+id/textCariFaskes">
@@ -51,7 +51,7 @@
                     android:inputType="none"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
-                    android:text="Jawa Barat" />
+                    android:text="@string/pilih_provinsi" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:hint="Pilih Kota"
+                android:hint="@string/pilih_kota_kabupaten"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayoutProvinsi"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayoutProvinsi"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProvinsi">
@@ -74,7 +74,7 @@
                     android:inputType="none"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
-                    android:text="Bogor" />
+                    android:text="@string/pilih_kota_kabupaten" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

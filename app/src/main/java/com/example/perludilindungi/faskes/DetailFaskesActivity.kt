@@ -14,6 +14,7 @@ import com.example.perludilindungi.adapter.FaskesAdapter
 import com.example.perludilindungi.models.DataFaskesResponse
 import com.example.perludilindungi.models.database.FaskesDataViewModel
 import com.example.perludilindungi.models.database.FaskesRepository
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DetailFaskesActivity : AppCompatActivity(){
 
@@ -51,6 +52,24 @@ class DetailFaskesActivity : AppCompatActivity(){
 
         bookmarkButton.setOnClickListener {
             insertDataToDatabase()
+        }
+
+        val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        navigation.selectedItemId = R.id.navigationLocation
+        navigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.navigationBookmark -> {
+                    startActivity(Intent(this, BookmarkFaskesActivity::class.java))
+                }
+                R.id.navigationLocation -> {
+                    startActivity(Intent(this, CariFaskesActivity::class.java))
+                }
+                R.id.navigationNews -> {
+                    // TODO taroh activity news disini
+                }
+                else -> Log.d(TAG, "onCreate: masuk else")
+            }
+            return@setOnItemSelectedListener true
         }
     }
 

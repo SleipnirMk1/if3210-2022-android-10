@@ -105,7 +105,7 @@ class FaskesFragment : Fragment(), FaskesAdapter.OnItemClickListener {
                         }
 //                    Log.d("FASKES", response.body().toString())
                     } else {
-                        Toast.makeText(activity, response.code(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, "Input Provinsi/Kabupaten/Kota tidak valid!", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
