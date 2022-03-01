@@ -30,13 +30,18 @@ class FaskesFragment : Fragment(), FaskesAdapter.OnItemClickListener {
     private var lat: Double = 0.0
     private var lon: Double = 0.0
 
+    private val TAG = "FaskesFragment"
+
     override fun onItemClick(position: Int) {
         val faskes: DataFaskesResponse = arrData.get(position)
 //        Toast.makeText(activity, "Item $faskes clicked", Toast.LENGTH_SHORT).show()
 
         val intent = Intent(activity, DetailFaskesActivity::class.java)
+        intent.putExtra("idFaskes", faskes.id)
         intent.putExtra("namaFaskes", faskes.nama)
         intent.putExtra("kodeFaskes", faskes.kode)
+        intent.putExtra("kotaFaskes", faskes.kota)
+        intent.putExtra("provinsiFaskes", faskes.provinsi)
         intent.putExtra("alamatFaskes", faskes.alamat)
         intent.putExtra("telpFaskes", faskes.telp)
         intent.putExtra("jenisFaskes", faskes.jenis_faskes)

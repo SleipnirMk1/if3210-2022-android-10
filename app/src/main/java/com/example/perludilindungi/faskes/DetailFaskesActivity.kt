@@ -8,20 +8,30 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.perludilindungi.R
 import com.example.perludilindungi.adapter.FaskesAdapter
+import com.example.perludilindungi.models.DataFaskesResponse
+import com.example.perludilindungi.models.database.FaskesDataViewModel
+import com.example.perludilindungi.models.database.FaskesRepository
 
 class DetailFaskesActivity : AppCompatActivity(){
 
     private val TAG = "DetailFaskesActivity"
+
+    private var id = -1
     private var namaFaskes = ""
     private var kodeFaskes = ""
+    private var kota = ""
+    private var provinsi = ""
     private var alamatFaskes = ""
     private var telpFaskes = ""
     private var jenisFaskes = ""
     private var statusFaskes = ""
     private var lon = ""
     private var lat = ""
+
+    private lateinit var mFaskesViewModel: FaskesDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,39 +40,53 @@ class DetailFaskesActivity : AppCompatActivity(){
         getIncomingIntent()
 
         val gMapsButton = findViewById<Button>(R.id.buttonGoogleMaps2)
+        val bookmarkButton = findViewById<Button>(R.id.buttonBookmark2)
+
+        mFaskesViewModel= ViewModelProvider(this).get(FaskesDataViewModel::class.java)
 
         gMapsButton.setOnClickListener {
             Log.d(TAG, "onCreate: gmaps button clicked")
+            gMapsIntent()
+        }
 
-            // Create a Uri from an intent string. Use the result to create an Intent.
-            val stringUri = "geo:$lat,$lon?q=$namaFaskes, $alamatFaskes"
-            Log.d(TAG, "onCreate: $stringUri")
-            val gmmIntentUri = Uri.parse(stringUri)
-
-            // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            // Make the Intent explicit by setting the Google Maps package
-            mapIntent.setPackage("com.google.android.apps.maps")
-
-            // Attempt to start an activity that can handle the Intent
-            startActivity(mapIntent)
+        bookmarkButton.setOnClickListener {
+            insertDataToDatabase()
         }
     }
 
-    fun getIncomingIntent() {
+    private fun insertDataToDatabase() {
+        if(allExtrasAvail()) {
+            // create object
+            val faskesObject = DataFaskesResponse(
+                id,
+                kodeFaskes,
+                namaFaskes,
+                kota,
+                provinsi,
+                alamatFaskes,
+                lat,
+                lon,
+                telpFaskes,
+                jenisFaskes,
+                statusFaskes
+            )
+            mFaskesViewModel.addFaskes(faskesObject)
+            Toast.makeText(this, "Successfully added to bookmark!", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "Failed to add faskes to bookmark", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun getIncomingIntent() {
         Log.d(TAG, "getIncomingIntent: checking for incoming intents")
-        if (intent.hasExtra("namaFaskes") &&
-            intent.hasExtra("kodeFaskes") &&
-            intent.hasExtra("alamatFaskes") &&
-            intent.hasExtra("telpFaskes") &&
-            intent.hasExtra("jenisFaskes") &&
-            intent.hasExtra("statusFaskes") &&
-                intent.hasExtra("lon") &&
-                intent.hasExtra("lat")) {
+        if (allExtrasAvail()) {
             Log.d(TAG, "getIncomingIntent: found intent extras")
 
+            id = intent.getIntExtra("idFaskes", 0)
             namaFaskes = intent.getStringExtra("namaFaskes").toString()
             kodeFaskes = intent.getStringExtra("kodeFaskes").toString()
+            kota = intent.getStringExtra("kotaFaskes").toString()
+            provinsi = intent.getStringExtra("provinsiFaskes").toString()
             alamatFaskes = intent.getStringExtra("alamatFaskes").toString()
             telpFaskes = intent.getStringExtra("telpFaskes").toString()
             jenisFaskes = intent.getStringExtra("jenisFaskes").toString()
@@ -74,7 +98,21 @@ class DetailFaskesActivity : AppCompatActivity(){
         }
     }
 
-    fun setFaskes() {
+    private fun allExtrasAvail(): Boolean {
+        return (intent.hasExtra("idFaskes") &&
+                intent.hasExtra("namaFaskes") &&
+                intent.hasExtra("kodeFaskes") &&
+                intent.hasExtra("kotaFaskes") &&
+                intent.hasExtra("provinsiFaskes") &&
+                intent.hasExtra("alamatFaskes") &&
+                intent.hasExtra("telpFaskes") &&
+                intent.hasExtra("jenisFaskes") &&
+                intent.hasExtra("statusFaskes") &&
+                intent.hasExtra("lon") &&
+                intent.hasExtra("lat"))
+    }
+
+    private fun setFaskes() {
         Log.d(TAG, "setFaskes: setting faskes data to widgets")
 
         val tvNamaFaskes = findViewById<TextView>(R.id.tvNamaFaskes2)
@@ -91,4 +129,21 @@ class DetailFaskesActivity : AppCompatActivity(){
         tvJenisFaskes.text = jenisFaskes
         tvStatusFaskes.text = statusFaskes
     }
+
+    private fun gMapsIntent() {
+        // Create a Uri from an intent string. Use the result to create an Intent.
+        val stringUri = "geo:$lat,$lon?q=$namaFaskes, $alamatFaskes"
+        Log.d(TAG, "onCreate: $stringUri")
+        val gmmIntentUri = Uri.parse(stringUri)
+
+        // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        // Make the Intent explicit by setting the Google Maps package
+        mapIntent.setPackage("com.google.android.apps.maps")
+
+        // Attempt to start an activity that can handle the Intent
+        startActivity(mapIntent)
+    }
+
+
 }

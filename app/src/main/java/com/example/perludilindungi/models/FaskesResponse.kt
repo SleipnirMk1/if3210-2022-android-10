@@ -9,6 +9,7 @@ data class FaskesResponse(
     val count_total: Int,
     val data: ArrayList<DataFaskesResponse>
 ) {
+    private val TAG = "FaskesResponse"
 
     fun get5Nearest(myLon: Double, myLat: Double): ArrayList<DataFaskesResponse> {
         var arrData = ArrayList<DataFaskesResponse>()
@@ -35,7 +36,7 @@ data class FaskesResponse(
             }
 
             // sort hashmap
-//            var sorted = hashMap.toSortedMap().values.toList()
+
             var sorted = hashMap.toList().sortedBy { (_, value) -> value}.toMap()
 //            Log.d("JUMLAH DATA", dataSize.toString())
 //            Log.d("JUMLAH HASHMAP", sorted.size.toString())

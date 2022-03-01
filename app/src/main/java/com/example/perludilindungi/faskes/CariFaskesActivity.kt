@@ -103,6 +103,7 @@ class CariFaskesActivity : AppCompatActivity(){
             })
         }
 
+        // CARI FASKES
         buttonSearch.setOnClickListener {
             val provinceInput = autoCompleteTVProvince.text.toString()
             val cityInput = autoCompleteTVCity.text.toString()

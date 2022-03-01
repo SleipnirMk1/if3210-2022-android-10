@@ -110,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvStatusFaskes2" />
 
     <Button
-        android:id="@+id/buttonGoogleMaps"
+        android:id="@+id/buttonBookmark2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+ Bookmark"
