@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="sky_blue">#FF00BFFF</color>
+    <color name="sky_blue">#FF229ad7</color>
+    <color name="dark_blue">#FF19688C</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
