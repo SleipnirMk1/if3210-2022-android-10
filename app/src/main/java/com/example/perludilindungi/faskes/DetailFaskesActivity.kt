@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.perludilindungi.R
 import com.example.perludilindungi.adapter.FaskesAdapter
 import com.example.perludilindungi.models.DataFaskesResponse
+import com.example.perludilindungi.models.database.FaskesDao
 import com.example.perludilindungi.models.database.FaskesDataViewModel
 import com.example.perludilindungi.models.database.FaskesRepository
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -40,23 +41,25 @@ class DetailFaskesActivity : AppCompatActivity(){
         setContentView(R.layout.activity_detail_faskes)
 
         Log.d(TAG, "onCreate: started.")
-        getIncomingIntent()
         mFaskesViewModel= ViewModelProvider(this)
             .get(FaskesDataViewModel::class.java)
+        getIncomingIntent()
 
         val gMapsButton = findViewById<Button>(R.id.buttonGoogleMaps2)
+        val bookmarkButton = findViewById<Button>(R.id.buttonBookmark2)
 
         gMapsButton.setOnClickListener {
             Log.d(TAG, "onCreate: gmaps button clicked")
             gMapsIntent()
         }
 
-        val bookmarkButton = findViewById<Button>(R.id.buttonBookmark2)
         bookmarkButton.setOnClickListener {
             if (bookmarkButton.text == "Bookmark") {
                 insertDataToDatabase()
+                bookmarkButton.text = "Unbookmark"
             } else {
                 deleteDataFromDatabase()
+                bookmarkButton.text = "Bookmark"
             }
         }
 
@@ -96,9 +99,11 @@ class DetailFaskesActivity : AppCompatActivity(){
                 statusFaskes
             )
             mFaskesViewModel.addFaskes(faskesObject)
-            Toast.makeText(this, "Successfully added to bookmark", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "Successfully added to bookmark", Toast.LENGTH_LONG).show()
+            Log.d(TAG, "insertDataToDatabase: successfully added to bookmark")
         } else {
-            Toast.makeText(this, "Failed to add faskes to bookmark", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Failed to add faskes to bookmark", Toast.LENGTH_SHORT).show()
+            Log.d(TAG, "insertDataToDatabase: failed to bookmark")
         }
     }
 
@@ -119,9 +124,11 @@ class DetailFaskesActivity : AppCompatActivity(){
             statusFaskes
         )
         mFaskesViewModel.unbookmark(faskesObject)
-        Toast.makeText(this, "Successfully remove from bookmark", Toast.LENGTH_LONG).show()
+//        Toast.makeText(this, "Successfully remove from bookmark", Toast.LENGTH_LONG).show()
+            Log.d(TAG, "deleteDataFromDatabase: successfully remove from bookmark")
         } else {
-            Toast.makeText(this, "Failed to unbookmark", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Failed to unbookmark", Toast.LENGTH_SHORT).show()
+            Log.d(TAG, "deleteDataFromDatabase: failed to unbookmark")
         }
     }
 
@@ -188,7 +195,13 @@ class DetailFaskesActivity : AppCompatActivity(){
             ivStatusFaskes.setImageResource(R.drawable.ic_action_cancel)
         }
 
-        bookmarkButton.text = "Bookmark" // TODO
+    // TODO
+        val bookmarked = mFaskesViewModel.isBookmarked(id)
+        if (bookmarked) {
+            bookmarkButton.text = "Unbookmark"
+        } else {
+            bookmarkButton.text = "Bookmark"
+        }
 
     }
 

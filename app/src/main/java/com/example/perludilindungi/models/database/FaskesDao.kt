@@ -14,7 +14,7 @@ interface FaskesDao {
     fun readAllData(): LiveData<List<DataFaskesResponse>>
 
     @Query("SELECT EXISTS (SELECT 1 FROM bookmark_faskes WHERE id = :id)")
-    fun isBookmarked(id: Int): LiveData<Boolean>
+    suspend fun isBookmarked(id: Int): Boolean
 
     @Delete
     suspend fun unbookmark(dataFaskes: DataFaskesResponse)

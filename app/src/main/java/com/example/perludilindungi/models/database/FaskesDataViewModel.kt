@@ -10,6 +10,7 @@ import com.example.perludilindungi.models.DataFaskesResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.lang.Exception
 import kotlin.properties.Delegates
 
@@ -39,28 +40,9 @@ class FaskesDataViewModel(application: Application): AndroidViewModel(applicatio
         }
     }
 
-//    fun isBookmarked (id: Int): Boolean {
-////        var bookmarked = false
-////        viewModelScope.launch(Dispatchers.IO) {
-////            bookmarked = repository.isBookmarked(id)
-////            Log.d(TAG, "isBookmarked: di dalem bracket $id, $bookmarked")
-////        }
-////        Log.d(TAG, "isBookmarked: di luar bracket $id, $bookmarked")
-////        return bookmarked
-////        var data = MutableLiveData<Boolean>()
-////        viewModelScope.launch(Dispatchers.IO) {
-////            val result =
-////                try {
-////                    delay(5000)
-////                    val isBookmarked = repository.isBookmarked(id)
-////                    isBookmarked
-////                } catch (e: Exception) {
-////                    false
-////                }
-////            data.postValue(result)
-////        }
-////        return data.value
-//
-//
-//    }
+    fun isBookmarked (id: Int): Boolean {
+        return runBlocking {
+            repository.isBookmarked(id)
+        }
+    }
 }
