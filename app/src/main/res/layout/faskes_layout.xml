@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="6dp"
+    android:paddingBottom="26dp">
+
+    <TextView
+        android:id="@+id/tvJenisFaskes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvNamaFaskes"
+        tools:text="jenis faskes" />
+
+    <TextView
+        android:id="@+id/tvNamaFaskes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Nama Faskes" />
+
+    <TextView
+        android:id="@+id/tvAlamatFaskes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tvNamaFaskes"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamaFaskes"
+        tools:text="alamat faskes" />
+
+    <TextView
+        android:id="@+id/tvKodeFaskes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tvJenisFaskes"
+        app:layout_constraintTop_toTopOf="@+id/tvNoTelp"
+        tools:text="kode faskes" />
+
+    <TextView
+        android:id="@+id/tvNoTelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tvAlamatFaskes"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlamatFaskes"
+        tools:text="no telp faskes" />
+</androidx.constraintlayout.widget.ConstraintLayout>

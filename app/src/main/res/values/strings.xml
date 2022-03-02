@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Perlu Dilindungi</string>
+    <string name="fasilitas_ini">Fasilitas Ini</string>
+    <string name="google_maps">Google Maps</string>
+
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="pilih_provinsi">Pilih Provinsi</string>
+    <string name="pilih_kota_kabupaten">Pilih Kota/Kabupaten</string>
 </resources>
