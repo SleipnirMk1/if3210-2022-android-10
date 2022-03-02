@@ -120,7 +120,7 @@
             android:id="@+id/buttonBookmark2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+ Bookmark"
+            tools:text="Bookmark"
             app:layout_constraintTop_toBottomOf="@id/buttonGoogleMaps2"
             app:layout_constraintEnd_toEndOf="@+id/buttonGoogleMaps2"
             app:layout_constraintStart_toStartOf="@+id/buttonGoogleMaps2" />
@@ -135,7 +135,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.46"
-            app:srcCompat="@drawable/ic_action_name" />
+            tools:src="@drawable/ic_action_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

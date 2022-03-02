@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.perludilindungi.R
 import com.example.perludilindungi.adapter.FaskesAdapter
@@ -31,27 +33,31 @@ class DetailFaskesActivity : AppCompatActivity(){
     private var statusFaskes = ""
     private var lon = ""
     private var lat = ""
-
     private lateinit var mFaskesViewModel: FaskesDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_faskes)
+
         Log.d(TAG, "onCreate: started.")
         getIncomingIntent()
+        mFaskesViewModel= ViewModelProvider(this)
+            .get(FaskesDataViewModel::class.java)
 
         val gMapsButton = findViewById<Button>(R.id.buttonGoogleMaps2)
-        val bookmarkButton = findViewById<Button>(R.id.buttonBookmark2)
-
-        mFaskesViewModel= ViewModelProvider(this).get(FaskesDataViewModel::class.java)
 
         gMapsButton.setOnClickListener {
             Log.d(TAG, "onCreate: gmaps button clicked")
             gMapsIntent()
         }
 
+        val bookmarkButton = findViewById<Button>(R.id.buttonBookmark2)
         bookmarkButton.setOnClickListener {
-            insertDataToDatabase()
+            if (bookmarkButton.text == "Bookmark") {
+                insertDataToDatabase()
+            } else {
+                deleteDataFromDatabase()
+            }
         }
 
         val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -90,9 +96,32 @@ class DetailFaskesActivity : AppCompatActivity(){
                 statusFaskes
             )
             mFaskesViewModel.addFaskes(faskesObject)
-            Toast.makeText(this, "Successfully added to bookmark!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Successfully added to bookmark", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(this, "Failed to add faskes to bookmark", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun deleteDataFromDatabase() {
+        if(allExtrasAvail()) {
+        // create object
+        val faskesObject = DataFaskesResponse(
+            id,
+            kodeFaskes,
+            namaFaskes,
+            kota,
+            provinsi,
+            alamatFaskes,
+            lat,
+            lon,
+            telpFaskes,
+            jenisFaskes,
+            statusFaskes
+        )
+        mFaskesViewModel.unbookmark(faskesObject)
+        Toast.makeText(this, "Successfully remove from bookmark", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "Failed to unbookmark", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -133,6 +162,9 @@ class DetailFaskesActivity : AppCompatActivity(){
 
     private fun setFaskes() {
         Log.d(TAG, "setFaskes: setting faskes data to widgets")
+        if (telpFaskes == "null") {
+            telpFaskes = "-"
+        }
 
         val tvNamaFaskes = findViewById<TextView>(R.id.tvNamaFaskes2)
         val tvKodeFaskes = findViewById<TextView>(R.id.tvKodeFaskes2)
@@ -140,6 +172,8 @@ class DetailFaskesActivity : AppCompatActivity(){
         val tvTelpFaskes = findViewById<TextView>(R.id.tvNoTelpFaskes2)
         val tvJenisFaskes = findViewById<TextView>(R.id.tvTipeFaskes2)
         val tvStatusFaskes = findViewById<TextView>(R.id.tvStatusFaskes2)
+        val ivStatusFaskes = findViewById<ImageView>(R.id.imageView)
+        val bookmarkButton = findViewById<Button>(R.id.buttonBookmark2)
 
         tvNamaFaskes.text = namaFaskes
         tvKodeFaskes.text = kodeFaskes
@@ -147,6 +181,15 @@ class DetailFaskesActivity : AppCompatActivity(){
         tvTelpFaskes.text = telpFaskes
         tvJenisFaskes.text = jenisFaskes
         tvStatusFaskes.text = statusFaskes
+
+        if(statusFaskes == "SIAP VAKSINASI" || statusFaskes == "Siap Vaksinasi") {
+            ivStatusFaskes.setImageResource(R.drawable.ic_action_name)
+        } else {
+            ivStatusFaskes.setImageResource(R.drawable.ic_action_cancel)
+        }
+
+        bookmarkButton.text = "Bookmark" // TODO
+
     }
 
     private fun gMapsIntent() {
@@ -163,6 +206,5 @@ class DetailFaskesActivity : AppCompatActivity(){
         // Attempt to start an activity that can handle the Intent
         startActivity(mapIntent)
     }
-
 
 }

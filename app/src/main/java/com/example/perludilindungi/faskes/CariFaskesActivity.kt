@@ -36,7 +36,7 @@ class CariFaskesActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cari_faskes)
-        Log.i("[LOG INFO]","onCreate called")
+        Log.d(TAG, "onCreate: called")
 
         // navigation
         val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -44,7 +44,7 @@ class CariFaskesActivity : AppCompatActivity(){
         navigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.navigationBookmark -> {
-                    startActivity(Intent(this, BookmarkFaskesActivity::class.java))
+                    startActivity(Intent(this, BookmarkFaskesActivity::class.java)) // TODO bisa diganti jadi apa gitu
                 }
                 R.id.navigationNews -> {
                     // TODO taroh activity news disini

@@ -38,6 +38,7 @@ class FaskesFragment : Fragment(), FaskesAdapter.OnItemClickListener {
     // buka halaman detail faskes
     override fun onItemClick(position: Int) {
         val faskes: DataFaskesResponse = arrData.get(position)
+        Log.d(TAG, "onItemClick: $faskes")
 //        Toast.makeText(activity, "Item $faskes clicked", Toast.LENGTH_SHORT).show()
 
         val intent = Intent(activity, DetailFaskesActivity::class.java)
@@ -105,13 +106,14 @@ class FaskesFragment : Fragment(), FaskesAdapter.OnItemClickListener {
                         }
 //                    Log.d("FASKES", response.body().toString())
                     } else {
-                        Toast.makeText(activity, "Input Provinsi/Kabupaten/Kota tidak valid!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, "Provinsi/Kabupaten/Kota tidak valid!", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         } else {
             // FaskesDataViewModel
-            mFaskesViewModel= ViewModelProvider(this).get(FaskesDataViewModel::class.java)
+            mFaskesViewModel= ViewModelProvider(this)
+                .get(FaskesDataViewModel::class.java)
             mFaskesViewModel.readAllData.observe(viewLifecycleOwner, Observer {
                 arrData = it
                 faskesAdapter.setData(arrData)
