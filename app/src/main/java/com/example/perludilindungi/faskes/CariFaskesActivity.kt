@@ -147,7 +147,7 @@ class CariFaskesActivity : AppCompatActivity(){
         }
     }
 
-    @Suppress("DEPRECATION")
+//    @Suppress("DEPRECATION")
     fun getCurrentLocation() {
         // initialize location
         val locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -179,11 +179,17 @@ class CariFaskesActivity : AppCompatActivity(){
                     Log.d("PROVIdER", location.provider)
                 }
                 else {
-                    val locationRequest = LocationRequest()
-                        .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                        .setInterval(10000)
-                        .setFastestInterval(1000)
-                        .setNumUpdates(1)
+//                    val locationRequest = LocationRequest()
+//                        .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+//                        .setInterval(10000)
+//                        .setFastestInterval(1000)
+//                        .setNumUpdates(1)
+                    val locationRequest = LocationRequest.create().apply {
+                        priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+                        interval = 10000
+                        fastestInterval = 1000
+                        numUpdates = 1
+                    }
 
                     // initialize location callback
                     class LocationCallbackFaskes : LocationCallback() {
