@@ -147,7 +147,12 @@ class CariFaskesActivity : AppCompatActivity(){
         }
     }
 
-//    @Suppress("DEPRECATION")
+    override fun onRestart() {
+        super.onRestart()
+        val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        navigation.selectedItemId = R.id.navigationLocation
+    }
+
     fun getCurrentLocation() {
         // initialize location
         val locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager

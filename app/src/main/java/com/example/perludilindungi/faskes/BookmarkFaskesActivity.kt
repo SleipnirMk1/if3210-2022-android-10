@@ -38,4 +38,10 @@ class BookmarkFaskesActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        navigation.selectedItemId = R.id.navigationBookmark
+    }
 }
