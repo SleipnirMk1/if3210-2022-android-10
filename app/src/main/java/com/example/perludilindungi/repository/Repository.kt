@@ -1,6 +1,8 @@
 package com.example.perludilindungi.repository
 
 import com.example.perludilindungi.api.RetrofitInstance
+import com.example.perludilindungi.models.CheckInPost
+import com.example.perludilindungi.models.CheckInResponse
 import com.example.perludilindungi.models.FaskesResponse
 import com.example.perludilindungi.models.NewsResponse
 import com.example.perludilindungi.models.ProvinceCityResponse
@@ -22,6 +24,10 @@ class Repository {
 
     suspend fun getNews(): Response<NewsResponse> {
         return  RetrofitInstance.api.getNews()
+    }
+
+    suspend fun postQr(post: CheckInPost): Response<CheckInResponse> {
+        return RetrofitInstance.api.postQr(post)
     }
 
 }

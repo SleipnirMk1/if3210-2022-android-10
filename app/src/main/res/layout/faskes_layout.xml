@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/tvJenisFaskes"
+        app:layout_constraintEnd_toEndOf="@+id/tvJenisFaskes"
         app:layout_constraintTop_toTopOf="@+id/tvNoTelp"
         tools:text="kode faskes" />
 
