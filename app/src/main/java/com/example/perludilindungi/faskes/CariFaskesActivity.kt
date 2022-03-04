@@ -17,10 +17,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.perludilindungi.R
 import com.example.perludilindungi.adapter.FaskesAdapter
 import com.example.perludilindungi.faskes.fragments.FaskesFragment
+import com.example.perludilindungi.qr_scanner.QrScanner
 import com.example.perludilindungi.repository.Repository
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationView
 import java.util.jar.Manifest
@@ -52,6 +54,13 @@ class CariFaskesActivity : AppCompatActivity(){
                 else -> Log.d(TAG, "onCreate: masuk else")
             }
             return@setOnItemSelectedListener true
+        }
+
+        // qr scanner button
+        val qrButton = findViewById<FloatingActionButton>(R.id.qrButton)
+        qrButton.setOnClickListener {
+            val intent = Intent(this, QrScanner::class.java)
+            startActivity(intent)
         }
 
 //        val navigation2 = findViewById<NavigationView>(R.id.bottom_navigation)
