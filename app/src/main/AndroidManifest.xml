@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PerluDilindungi">
         <activity
+            android:name=".news.NewsActivity"
+            android:exported="false" />
+        <activity
             android:name=".qr_scanner.QrScanner"
             android:exported="false"
             android:parentActivityName=".faskes.CariFaskesActivity"/>
