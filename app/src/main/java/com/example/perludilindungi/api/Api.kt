@@ -11,21 +11,21 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface Api {
-    @GET("get-province") // the endpoint
+    @GET("api/get-province") // the endpoint
     suspend fun getProvince(): Response<ProvinceCityResponse>
 
-    @GET("get-city")
+    @GET("api/get-city")
     suspend fun getCity(
         @Query("start_id") provinceName: String
     ): Response<ProvinceCityResponse>
 
-    @GET("get-faskes-vaksinasi")
+    @GET("api/get-faskes-vaksinasi")
     suspend fun getFaskes(
         @Query("province") province: String,
         @Query("city") city: String
     ):Response<FaskesResponse>
 
-    @POST("post-qr")
+    @POST("check-in")
     suspend fun postQr(
         @Body post: CheckInPost
     ): Response<CheckInResponse>

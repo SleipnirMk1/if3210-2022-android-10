@@ -3,14 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/drawable-anydpi/ic_action_cancel.xml" value="0.174" />
+        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.174" />
+        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.174" />
+        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/drawable/ic_baseline_bookmarks_24.xml" value="0.174" />
+        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/drawable/ic_baseline_error_24.xml" value="0.174" />
+        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.174" />
         <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.1" />
+        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/drawable/ic_baseline_remove_circle_24.xml" value="0.174" />
+        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/drawable/ic_logo.xml" value="0.174" />
         <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout-land/activity_cari_faskes.xml" value="0.1" />
         <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout-land/activity_detail_faskes.xml" value="0.1" />
         <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout/activity_bookmark_faskes.xml" value="0.1" />
-        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout/activity_cari_faskes.xml" value="0.1" />
+        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout/activity_cari_faskes.xml" value="0.5" />
         <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout/activity_detail_faskes.xml" value="0.1" />
         <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout/activity_qr_scanner.xml" value="0.25" />
+        <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout/activity_qr_scanner.xml" value="0.67" />
         <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
         <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout/dropdown_item.xml" value="0.1" />
         <entry key="..\:/Kuliah ITB/PBD/if3210-2022-android-10/app/src/main/res/layout/faskes_fragment.xml" value="0.1" />

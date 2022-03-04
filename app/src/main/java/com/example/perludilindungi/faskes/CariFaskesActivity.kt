@@ -59,10 +59,7 @@ class CariFaskesActivity : AppCompatActivity(){
         // qr scanner button
         val qrButton = findViewById<FloatingActionButton>(R.id.qrButton)
         qrButton.setOnClickListener {
-            getCurrentLocation()
             val intent = Intent(this, QrScanner::class.java)
-            intent.putExtra("latitude", lat)
-            intent.putExtra("longitude", long)
             startActivity(intent)
         }
 

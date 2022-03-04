@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.perludilindungi.R
 import com.example.perludilindungi.faskes.fragments.FaskesFragment
 import com.example.perludilindungi.models.database.FaskesDataViewModel
+import com.example.perludilindungi.qr_scanner.QrScanner
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class BookmarkFaskesActivity : AppCompatActivity() {
     private val TAG = "BookmarkFaskesActivity"
@@ -36,6 +38,12 @@ class BookmarkFaskesActivity : AppCompatActivity() {
                 else -> Log.d(TAG, "onCreate: masuk else")
             }
             return@setOnItemSelectedListener true
+        }
+
+        val qrButton = findViewById<FloatingActionButton>(R.id.qrButton)
+        qrButton.setOnClickListener {
+            val intent = Intent(this, QrScanner::class.java)
+            startActivity(intent)
         }
     }
 
