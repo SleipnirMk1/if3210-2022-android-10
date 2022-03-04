@@ -14,16 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PerluDilindungi">
         <activity
+            android:name=".news.NewsActivity"
+            android:exported="false" />
+        <activity
             android:name=".faskes.CariFaskesActivity"
             android:exported="false"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
         <activity
             android:name=".faskes.BookmarkFaskesActivity"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
             android:name=".faskes.DetailFaskesActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
