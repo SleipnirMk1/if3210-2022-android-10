@@ -9,17 +9,28 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.perludilindungi.R
 import com.example.perludilindungi.adapter.NewsAdapter
-import com.example.perludilindungi.models.NewsResponse
+import com.example.perludilindungi.faskes.BookmarkFaskesActivity
+import com.example.perludilindungi.faskes.CariFaskesActivity
 import com.example.perludilindungi.models.NewsResultResponse
+import com.example.perludilindungi.qr_scanner.QrScanner
 import com.example.perludilindungi.repository.Repository
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class NewsActivity : AppCompatActivity() {
+    companion object {
+        const val NEWS_TAG = "News"
+        const val EXTRA_TITLE = "EXTRA_TITLE"
+        const val EXTRA_DATE = "EXTRA_DATE"
+        const val EXTRA_LINK = "EXTRA_LINK"
+        const val EXTRA_IMAGE = "EXTRA_IMAGE"
+    }
+
     private lateinit var viewModel: NewsViewModel
     private lateinit var newsAdapter: NewsAdapter
     private lateinit var rvNews: RecyclerView
     private var list: ArrayList<NewsResultResponse> = arrayListOf()
     private var itemNumber: Int = 0
-    private val NEWS_TAG = "News"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +42,35 @@ class NewsActivity : AppCompatActivity() {
 
         showRecyclerList()
         getNewsData()
+        setNavigation()
+        setQRButton()
+    }
+
+    private fun setQRButton() {
+        val qrButton = findViewById<FloatingActionButton>(R.id.qrButton)
+        qrButton.setOnClickListener {
+            val intent = Intent(this, QrScanner::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setNavigation() {
+        val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        navigation.selectedItemId = R.id.navigationNews
+        navigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.navigationBookmark -> {
+                    val intent = Intent(this@NewsActivity, BookmarkFaskesActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.navigationLocation -> {
+                    val intent = Intent(this@NewsActivity, CariFaskesActivity::class.java)
+                    startActivity(intent)
+                }
+                else -> Log.d(NEWS_TAG, "onCreate: navigation else")
+            }
+            return@setOnItemSelectedListener true
+        }
     }
 
     private fun showRecyclerList() {
@@ -51,10 +91,10 @@ class NewsActivity : AppCompatActivity() {
 
     private fun showSelectedNews(data: NewsResultResponse) {
         val intent = Intent(this@NewsActivity, NewsDetailActivity::class.java)
-        intent.putExtra("EXTRA_TITLE", data.title)
-        intent.putExtra("EXTRA_DATE", data.pubDate)
-        intent.putExtra("EXTRA_LINK", data.link?.get(0) ?: data.guid)
-        intent.putExtra("EXTRA_IMAGE", data.encl.imageUrl)
+        intent.putExtra(EXTRA_TITLE, data.title)
+        intent.putExtra(EXTRA_DATE, data.pubDate)
+        intent.putExtra(EXTRA_LINK, data.link?.get(0) ?: data.guid)
+        intent.putExtra(EXTRA_IMAGE, data.encl.imageUrl)
 
         startActivity(intent)
     }
