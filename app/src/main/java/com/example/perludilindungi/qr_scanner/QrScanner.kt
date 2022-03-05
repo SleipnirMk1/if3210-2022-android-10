@@ -94,7 +94,7 @@ class QrScanner : AppCompatActivity(), SensorEventListener {
                         }
                     }
                 } else {
-                    outDisplay.text = "Terjadi error"
+                    outDisplay.text = "Error"
                 }
             })
         }

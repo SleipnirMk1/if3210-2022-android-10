@@ -43,8 +43,8 @@
 
     <TextView
         android:id="@+id/output"
-        android:layout_width="130dp"
-        android:layout_height="39dp"
+        android:layout_width="222dp"
+        android:layout_height="37dp"
         android:layout_marginBottom="32dp"
         android:gravity="center_horizontal"
         android:textSize="25dp"
