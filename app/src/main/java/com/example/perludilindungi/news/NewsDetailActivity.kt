@@ -1,9 +1,12 @@
 package com.example.perludilindungi.news
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuItem
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.ActionBar
@@ -23,6 +26,7 @@ class NewsDetailActivity : AppCompatActivity() {
     }
 
     private lateinit var myWebView: WebView
+    private lateinit var link: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +35,8 @@ class NewsDetailActivity : AppCompatActivity() {
         myWebView = findViewById(R.id.news_web_view)
         myWebView.webViewClient = WebViewClient()
 
-        val link = intent.getStringExtra(EXTRA_LINK)
-        myWebView.loadUrl(link!!)
+        link = intent.getStringExtra(EXTRA_LINK)!!
+        myWebView.loadUrl(link)
 
         Log.d(NEWS_TAG, "onCreate: called")
 
@@ -49,6 +53,21 @@ class NewsDetailActivity : AppCompatActivity() {
             return true
         }
         return super.onKeyDown(keyCode, event)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.webview_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.open_browser) {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(link)
+
+            startActivity(intent)
+        }
+        return true
     }
 
     private fun setQRButton() {
