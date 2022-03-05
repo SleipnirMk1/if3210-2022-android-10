@@ -1,5 +1,6 @@
 package com.example.perludilindungi.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -52,12 +53,14 @@ class NewsAdapter(private var results: ArrayList<NewsResultResponse>, private va
         var newsImage: ImageView = itemView.findViewById(R.id.thumbnail)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setResultsData(data: ArrayList<NewsResultResponse>) {
         this.results.clear()
         this.results.addAll(data)
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setItemCount(data: Int) {
         itemNumber = data
         notifyDataSetChanged()

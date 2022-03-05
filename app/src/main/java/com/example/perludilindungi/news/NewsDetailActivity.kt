@@ -1,13 +1,12 @@
 package com.example.perludilindungi.news
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
 import com.example.perludilindungi.R
-import com.example.perludilindungi.models.NewsResultResponse
 
 class NewsDetailActivity : AppCompatActivity() {
     companion object {
