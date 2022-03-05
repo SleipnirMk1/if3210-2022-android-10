@@ -23,13 +23,13 @@ Aplikasi berisi fitur-fitur yang membantu mengakses berita, mencari faskes, dan 
 * Room       : Untuk database yang menyimpan bookmark
 * Glide      : Untuk menampilkan gambar sebagai thumbnail berita
 ## Screenshot Aplikasi
-![splash-screen](./Screenshots/SplashScreen.jpg)
-![search-faskes](./Screenshots/SearchFaskes.jpg)
-![detail-faskes](./Screenshots/DetailFaskes.jpg)
-![bookmark-faskes](./Screenshots/BookmarkFaskes.jpg)
-![check-in](./Screenshots/CheckIn.jpg)
-![check-in-black](./Screenshots/CheckInBlack.jpg)
-![check-in-red](./Screenshots/CheckInRed.jpg)
+<img src="./Screenshots/SplashScreen.jpg" width="48">
+<img src="./Screenshots/SearchFaskes.jpgg" width="48">
+<img src="./Screenshots/DetailFaskes.jpg" width="48">
+<img src="./Screenshots/BookmarkFaskes.jpg" width="48">
+<img src="./Screenshots/CheckIn.jpg" width="48">
+<img src="./Screenshots/CheckInBlack.jpg" width="48">
+<img src="./Screenshots/CheckInRed.jpg" width="48">
 ## Pembagian Kerja
 * Raffi Zulvian Muzhaffar (13519003)    : Berita COVID-19
 * Jesica (13519011)                     : Cari Faskes, Detail Faskes, Bookmark Faskes, Bottom Navigation, Splash Screen
