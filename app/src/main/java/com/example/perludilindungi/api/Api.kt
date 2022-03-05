@@ -26,7 +26,7 @@ interface Api {
         @Query("city") city: String
     ):Response<FaskesResponse>
 
-    @GET("get-news")
+    @GET("/api/get-news")
     suspend fun getNews(): Response<NewsResponse>
 
     @POST("check-in")

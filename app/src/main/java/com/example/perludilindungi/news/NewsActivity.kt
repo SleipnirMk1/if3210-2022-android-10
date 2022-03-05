@@ -51,7 +51,10 @@ class NewsActivity : AppCompatActivity() {
 
     private fun showSelectedNews(data: NewsResultResponse) {
         val intent = Intent(this@NewsActivity, NewsDetailActivity::class.java)
-        intent.putExtra("EXTRA_NEWS", data)
+        intent.putExtra("EXTRA_TITLE", data.title)
+        intent.putExtra("EXTRA_DATE", data.pubDate)
+        intent.putExtra("EXTRA_LINK", data.link?.get(0) ?: data.guid)
+        intent.putExtra("EXTRA_IMAGE", data.encl.imageUrl)
 
         startActivity(intent)
     }
@@ -68,6 +71,7 @@ class NewsActivity : AppCompatActivity() {
             if (response.isSuccessful) {
                 val results = response.body()?.results
                 val countTotal = response.body()?.countTotal
+                Log.d(NEWS_TAG, "====FETCH SUCCESS====")
 
                 if (results != null && countTotal != null) {
                     list.addAll(results)
@@ -77,7 +81,10 @@ class NewsActivity : AppCompatActivity() {
                     newsAdapter.itemCount = countTotal
                 }
             } else {
+                Log.d(NEWS_TAG, "====FETCH FAILED====")
+                Log.d(NEWS_TAG, response.code().toString())
                 Log.d(NEWS_TAG, response.errorBody().toString())
+                Log.d(NEWS_TAG, response.body()?.message.toString())
             }
         }
     }
