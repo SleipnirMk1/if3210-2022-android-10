@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.perludilindungi.R
 import com.example.perludilindungi.adapter.FaskesAdapter
 import com.example.perludilindungi.faskes.fragments.FaskesFragment
+import com.example.perludilindungi.news.NewsActivity
 import com.example.perludilindungi.qr_scanner.QrScanner
 import com.example.perludilindungi.repository.Repository
 import com.google.android.gms.location.*
@@ -49,7 +50,7 @@ class CariFaskesActivity : AppCompatActivity(){
                     startActivity(Intent(this, BookmarkFaskesActivity::class.java)) // TODO bisa diganti jadi apa gitu
                 }
                 R.id.navigationNews -> {
-                    // TODO taroh activity news disini
+                    startActivity(Intent(this, NewsActivity::class.java))
                 }
                 else -> Log.d(TAG, "onCreate: masuk else")
             }
@@ -185,7 +186,7 @@ class CariFaskesActivity : AppCompatActivity(){
                 return
             }
             flp.lastLocation.addOnCompleteListener(OnCompleteListener {
-                val location: Location = it.result
+                val location: Location? = it.result
 
                 if (location != null) {
                     lat = location.latitude
