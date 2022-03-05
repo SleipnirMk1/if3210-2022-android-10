@@ -16,6 +16,11 @@ Aplikasi berisi fitur-fitur yang membantu mengakses berita, mencari faskes, dan 
 ## Library yang Digunakan
 * Retrofit : Untuk mengirimkan request ke API
 * ZXing : Untuk barcode scanner yang memindai QR scanner
+* Coroutines : Untuk melakukan pengambilan data secara asinkron
+* Fragment : Untuk menampilkan recyclerview
+* Location : Untuk memperoleh data lokasi pengguna
+* Navigation : Untuk membuat navigation bar di bagian bawah
+* Room : Untuk database yang menyimpan bookmark
 ## Screenshot Aplikasi
 ## Pembagian Kerja
 * Raffi Zulvian Muzhaffar (13519003)    : Berita COVID-19

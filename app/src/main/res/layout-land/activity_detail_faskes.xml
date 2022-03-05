@@ -17,7 +17,7 @@
             android:layout_weight="1"
             android:paddingLeft="32dp"
             android:paddingTop="24dp"
-            android:paddingRight="32dp"
+            android:paddingRight="16dp"
             android:paddingBottom="90dp"
             tools:context=".faskes.DetailFaskesActivity"
             tools:layout_editor_absoluteX="-195dp"
@@ -30,7 +30,7 @@
                 android:text="TextView"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/tvNamaFaskes2"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvKodeFaskes2"
                 tools:text="Tipe Faskes" />
 
@@ -39,7 +39,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textSize="30sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 android:typeface="sans"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
                 android:id="@+id/buttonGoogleMaps2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="0dp"
                 android:text="@string/google_maps"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -155,4 +155,16 @@
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_menu" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/qrButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="96dp"
+        android:src="@drawable/ic_baseline_qr_code_scanner_24"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
