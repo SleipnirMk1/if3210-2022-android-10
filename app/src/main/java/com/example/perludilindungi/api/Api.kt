@@ -1,10 +1,6 @@
 package com.example.perludilindungi.api
 
-import com.example.perludilindungi.models.CheckInPost
-import com.example.perludilindungi.models.CheckInResponse
-import com.example.perludilindungi.models.FaskesResponse
-import com.example.perludilindungi.models.NewsResponse
-import com.example.perludilindungi.models.ProvinceCityResponse
+import com.example.perludilindungi.models.*
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -24,7 +20,7 @@ interface Api {
     suspend fun getFaskes(
         @Query("province") province: String,
         @Query("city") city: String
-    ):Response<FaskesResponse>
+    ): Response<FaskesResponse>
 
     @GET("/api/get-news")
     suspend fun getNews(): Response<NewsResponse>
