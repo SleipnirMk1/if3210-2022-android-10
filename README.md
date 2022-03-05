@@ -23,6 +23,20 @@ Aplikasi berisi fitur-fitur yang membantu mengakses berita, mencari faskes, dan 
 * Room       : Untuk database yang menyimpan bookmark
 * Glide      : Untuk menampilkan gambar sebagai thumbnail berita
 ## Screenshot Aplikasi
+### Light Mode
+<img src="./Screenshots/SplashScreenLight.png" width="128">
+<img src="./Screenshots/NewsLight.png" width="128">
+<img src="./Screenshots/DetailNewsLight.png" width="128">
+<img src="./Screenshots/SearchFaskesLight.png" width="128">
+<img src="./Screenshots/DetailFaskesLight.png" width="128">
+<img src="./Screenshots/BookmarkFaskesLight.png" width="128">
+<img src="./Screenshots/ScanLight.png" width="128">
+
+### Landscape
+<img src="./Screenshots/DetailFaskesLandscape.png" height="128">
+<img src="./Screenshots/SearchFaskesLandscape.png" height="128">
+
+### Dark mode
 <img src="./Screenshots/SplashScreen.jpg" width="128">
 <img src="./Screenshots/SearchFaskes.jpg" width="128">
 <img src="./Screenshots/DetailFaskes.jpg" width="128">

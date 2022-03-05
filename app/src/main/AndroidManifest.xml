@@ -19,7 +19,8 @@
             android:exported="false" />
         <activity
             android:name=".news.NewsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".qr_scanner.QrScanner"
             android:exported="false"
