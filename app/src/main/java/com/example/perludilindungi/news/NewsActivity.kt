@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.perludilindungi.R
 import com.example.perludilindungi.adapter.NewsAdapter
+import com.example.perludilindungi.models.NewsResponse
 import com.example.perludilindungi.models.NewsResultResponse
 import com.example.perludilindungi.repository.Repository
 
@@ -49,13 +50,10 @@ class NewsActivity : AppCompatActivity() {
     }
 
     private fun showSelectedNews(data: NewsResultResponse) {
-        startActivity(
-            Intent(this@NewsActivity, NewsDetailActivity::class.java)
-                .putExtra("intent_news_title", data.title)
-                .putExtra("intent_news_date", data.pubDate)
-                .putExtra("intent_news_image", data.encl.imageUrl)
-                .putExtra("intent_news_image", data.desc?.cdata)
-        )
+        val intent = Intent(this@NewsActivity, NewsDetailActivity::class.java)
+        intent.putExtra("EXTRA_NEWS", data)
+
+        startActivity(intent)
     }
 
     private fun getNewsData() {
