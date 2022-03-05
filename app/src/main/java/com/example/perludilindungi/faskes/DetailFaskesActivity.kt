@@ -17,6 +17,7 @@ import com.example.perludilindungi.models.DataFaskesResponse
 import com.example.perludilindungi.models.database.FaskesDao
 import com.example.perludilindungi.models.database.FaskesDataViewModel
 import com.example.perludilindungi.models.database.FaskesRepository
+import com.example.perludilindungi.news.NewsActivity
 import com.example.perludilindungi.qr_scanner.QrScanner
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
