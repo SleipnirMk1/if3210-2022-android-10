@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.perludilindungi.R
 import com.example.perludilindungi.faskes.fragments.FaskesFragment
 import com.example.perludilindungi.models.database.FaskesDataViewModel
+import com.example.perludilindungi.news.NewsActivity
 import com.example.perludilindungi.qr_scanner.QrScanner
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -33,7 +34,7 @@ class BookmarkFaskesActivity : AppCompatActivity() {
                     startActivity(Intent(this, CariFaskesActivity::class.java))
                 }
                 R.id.navigationNews -> {
-                    // TODO taroh activity news disini
+                    startActivity(Intent(this, NewsActivity::class.java))
                 }
                 else -> Log.d(TAG, "onCreate: masuk else")
             }

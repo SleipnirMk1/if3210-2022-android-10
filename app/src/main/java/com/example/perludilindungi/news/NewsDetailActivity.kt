@@ -10,7 +10,11 @@ import com.example.perludilindungi.R
 import com.example.perludilindungi.models.NewsResultResponse
 
 class NewsDetailActivity : AppCompatActivity() {
-    private val NEWS_TAG = "NewsDetail"
+    companion object {
+        const val NEWS_TAG = "NewsDetail"
+        const val EXTRA_LINK = "EXTRA_LINK"
+    }
+
     private lateinit var myWebView: WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +24,7 @@ class NewsDetailActivity : AppCompatActivity() {
         myWebView = findViewById(R.id.news_web_view)
         myWebView.webViewClient = WebViewClient()
 
-        val link = intent.getStringExtra("EXTRA_LINK")
+        val link = intent.getStringExtra(EXTRA_LINK)
         myWebView.loadUrl(link!!)
 
         Log.d(NEWS_TAG, "onCreate: called")
