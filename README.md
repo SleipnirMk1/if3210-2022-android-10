@@ -21,6 +21,7 @@ Aplikasi berisi fitur-fitur yang membantu mengakses berita, mencari faskes, dan 
 * Location : Untuk memperoleh data lokasi pengguna
 * Navigation : Untuk membuat navigation bar di bagian bawah
 * Room : Untuk database yang menyimpan bookmark
+* Glide: Untuk menampilkan gambar sebagai thumbnail berita
 ## Screenshot Aplikasi
 ## Pembagian Kerja
 * Raffi Zulvian Muzhaffar (13519003)    : Berita COVID-19
