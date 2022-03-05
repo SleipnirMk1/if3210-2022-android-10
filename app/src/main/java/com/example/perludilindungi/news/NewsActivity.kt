@@ -21,9 +21,7 @@ class NewsActivity : AppCompatActivity() {
     companion object {
         const val NEWS_TAG = "News"
         const val EXTRA_TITLE = "EXTRA_TITLE"
-        const val EXTRA_DATE = "EXTRA_DATE"
         const val EXTRA_LINK = "EXTRA_LINK"
-        const val EXTRA_IMAGE = "EXTRA_IMAGE"
     }
 
     private lateinit var viewModel: NewsViewModel
@@ -92,9 +90,7 @@ class NewsActivity : AppCompatActivity() {
     private fun showSelectedNews(data: NewsResultResponse) {
         val intent = Intent(this@NewsActivity, NewsDetailActivity::class.java)
         intent.putExtra(EXTRA_TITLE, data.title)
-        intent.putExtra(EXTRA_DATE, data.pubDate)
         intent.putExtra(EXTRA_LINK, data.link?.get(0) ?: data.guid)
-        intent.putExtra(EXTRA_IMAGE, data.encl.imageUrl)
 
         startActivity(intent)
     }

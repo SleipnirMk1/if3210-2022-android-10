@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.perludilindungi.R
 import com.example.perludilindungi.faskes.BookmarkFaskesActivity
@@ -18,6 +19,7 @@ class NewsDetailActivity : AppCompatActivity() {
     companion object {
         const val NEWS_TAG = "NewsDetail"
         const val EXTRA_LINK = "EXTRA_LINK"
+        const val EXTRA_TITLE = "EXTRA_TITLE"
     }
 
     private lateinit var myWebView: WebView
@@ -36,6 +38,9 @@ class NewsDetailActivity : AppCompatActivity() {
 
         setQRButton()
         setNavigation()
+
+        val title = intent.getStringExtra(EXTRA_TITLE)
+        setActionBarTitle(title!!)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
@@ -70,6 +75,12 @@ class NewsDetailActivity : AppCompatActivity() {
                 else -> Log.d(NewsActivity.NEWS_TAG, "onCreate: navigation else")
             }
             return@setOnItemSelectedListener true
+        }
+    }
+
+    private fun setActionBarTitle(title: String) {
+        if (supportActionBar != null) {
+            (supportActionBar as ActionBar).title = title
         }
     }
 }
