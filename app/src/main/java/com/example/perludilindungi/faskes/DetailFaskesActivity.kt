@@ -76,7 +76,7 @@ class DetailFaskesActivity : AppCompatActivity(){
                     startActivity(Intent(this, CariFaskesActivity::class.java))
                 }
                 R.id.navigationNews -> {
-                    // TODO taroh activity news disini
+                    startActivity(Intent(this, NewsActivity::class.java))
                 }
                 else -> Log.d(TAG, "onCreate: masuk else")
             }
